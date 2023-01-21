@@ -17,16 +17,16 @@ function NavBar() {
                         component="div"
                         sx={{display: { xs: 'none', sm: 'block' }}}
                     >
-                        Lai Wei Hong's Stuff
+                        Lai Wei Hong
                     </Typography>
                     <div>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                             <Button to="/" component={Link} sx={{ color: '#fff' }}>
                                 Home
                             </Button>
-                            <Button to="/about" component={Link} sx={{ color: '#fff' }}>
+                            {/* <Button to="/about" component={Link} sx={{ color: '#fff' }}>
                                 About
-                            </Button>
+                            </Button> */}
                         </Box>
                     </div>
                 </Toolbar>

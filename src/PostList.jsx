@@ -1,7 +1,7 @@
-import { Divider, List, Box, ListItemButton, ListItemText, IconButton } from "@mui/material";
+import { Divider, List, Box, ListItemButton, ListItemText, IconButton, Typography } from "@mui/material";
 import React from "react";
 import indexJson from './resources/index.json';
-import distributedSystemJson from './resources/distributedSystems.json'
+import devDiary from './resources/devDiary.json'
 import { ArrowBack } from "@mui/icons-material";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
@@ -27,7 +27,7 @@ class PostList extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevProps.category != this.props.category) {
+        if(prevProps.category !== this.props.category) {
             const posts = indexJson.categories[this.props.category]["content-files"].map(entry => {
                 return {...entry};
             });
@@ -39,12 +39,14 @@ class PostList extends React.Component {
     }
 
     handleClickEvent(index, event) {
-        const content = distributedSystemJson[index].content;
+        const location = devDiary[index].location;
 
-        this.setState({
-            postSelected: true,
-            loadedContent: content
-        });
+        fetch(location).then((response) => response.text()).then((content) => {
+            this.setState({
+                postSelected: true,
+                loadedContent: content
+            });
+        })
     }
 
     handleBackClickEvent(event) {
@@ -61,9 +63,11 @@ class PostList extends React.Component {
                     <IconButton style={{ display: 'flex'}} onClick={(evt) => this.handleBackClickEvent(evt)}>
                         <ArrowBack />
                     </IconButton>
-                    <ReactMarkdown>
-                        {this.state.loadedContent}
-                    </ReactMarkdown>
+                    <Typography align="left"> 
+                        <ReactMarkdown>
+                            {this.state.loadedContent}
+                        </ReactMarkdown>
+                    </Typography>
                 </Box>
             );
         } else {

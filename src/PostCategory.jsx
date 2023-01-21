@@ -1,4 +1,4 @@
-import { ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { ListItemButton, ListItemText } from "@mui/material";
 import { List } from "@mui/material";
 import React from "react";
 import indexJson from './resources/index.json';

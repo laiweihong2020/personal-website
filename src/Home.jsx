@@ -1,8 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Grid } from "@mui/material";
-import logo from './logo.svg';
-import LoremIpsum from 'react-lorem-ipsum';
+import { Grid, Divider } from "@mui/material";
 import PostList from './PostList';
 import PostCategory from './PostCategory';
 
